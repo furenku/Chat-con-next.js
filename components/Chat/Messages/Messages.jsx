@@ -5,7 +5,8 @@ export default ({
 }) => {
 
     const renderMessages = messages.map( message => (
-    <Message {...message} key={messages.id}/>))
+        <Message {...message} key={messages.id}/>
+    ))
 
     return (
         <div>

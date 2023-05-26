@@ -6,7 +6,9 @@ export default ({
     <div className="Message">
         <div className="User">
             <div className="name">
-                {user.username}
+                <strong>
+                    {user.username}
+                </strong>
             </div>
         </div>
         <div className="text">

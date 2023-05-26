@@ -2,78 +2,6 @@ import Messages from "./Messages/Messages"
 import Users from "./Users/Users"
 
 
-const messages = [
-    {
-        "id": 1,
-        "username": "foo"
-    },
-    {
-        "id": 2,
-        "username": "bar"
-    },
-    {
-        "id": 3,
-        "username": "xyz"
-    },
-    {
-        "username": "newuser",
-        "id": 4
-    },
-    {
-        "username": "newuser",
-        "id": 5
-    },
-    {
-        "username": "newuser",
-        "id": 6
-    },
-    {
-        "username": "newuser",
-        "id": 7
-    },
-    {
-        "username": "newuser",
-        "id": 8
-    }
-]
-
-const users = [
-    [
-    {
-        "id": 1,
-        "username": "foo"
-    },
-    {
-        "id": 2,
-        "username": "bar"
-    },
-    {
-        "id": 3,
-        "username": "xyz"
-    },
-    {
-        "username": "newuser",
-        "id": 4
-    },
-    {
-        "username": "newuser",
-        "id": 5
-    },
-    {
-        "username": "newuser",
-        "id": 6
-    },
-    {
-        "username": "newuser",
-        "id": 7
-    },
-    {
-        "username": "newuser",
-        "id": 8
-    }
-]
-]
-
 import { useState, useEffect } from "react"
 
 export default () => {
@@ -90,20 +18,47 @@ export default () => {
     )
 
     const getData = async () => {
-        await getUsers()
-        await getMessages()
+        try {
+
+            await getUsers()
+            await getMessages()
+
+        } catch( err ) {
+
+            console.error("get chat data:", err.message );
+
+        }
     }
     
     const getUsers = async () => {
-        const f = await fetch("http://localhost:3333/users")
-        const result = await f.json()
-        setUsers(result)
+
+        try {
+
+            const f = await fetch( "api/chat/users" )
+
+            const result = await f.json()
+            setUsers(result)
+
+        } catch( err ) {
+
+            throw new Error("Usuarios: " + err.message );
+
+        }
+
     }
     
     const getMessages = async () => {
-        const f = await fetch("http://localhost:3333/messages")
-        const result = await f.json()
-        setMessages(result)
+        try {
+
+            const f = await fetch("api/chat/messages")
+            const result = await f.json()
+            setMessages(result)
+
+        } catch( err ) {
+
+            throw new Error("Mensajes: " + err.message );
+
+        }
     }
 
     

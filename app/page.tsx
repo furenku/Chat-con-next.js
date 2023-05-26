@@ -10,7 +10,7 @@ export default function Home() {
 
       {/* Nav.menu*/}
       <nav className="Menu">
-        <ul>
+        <ul className="flex flex-col">
           <Link href="/sub">Sub</Link>
           <Link href="/sub/child">Child</Link>
           <Link href="/sub/grandchildren">Grandchildren</Link>
