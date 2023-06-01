@@ -1,75 +1,25 @@
+import styles from "./Chat.module.css"
+
 import Messages from "./Messages/Messages"
 import Users from "./Users/Users"
 
+import Compose from "./Compose/Compose"
 
-import { useState, useEffect } from "react"
 
-export default () => {
+export default ({ users, messages }) => {
 
-    const [ users, setUsers ] = useState([])
-    const [ messages, setMessages ] = useState([])
-    
-    //inicializacion
-    useEffect(
-        () => {
-            getData()
-        },
-        []
-    )
-
-    const getData = async () => {
-        try {
-
-            await getUsers()
-            await getMessages()
-
-        } catch( err ) {
-
-            console.error("get chat data:", err.message );
-
-        }
-    }
-    
-    const getUsers = async () => {
-
-        try {
-
-            const f = await fetch( "api/chat/users" )
-
-            const result = await f.json()
-            setUsers(result)
-
-        } catch( err ) {
-
-            throw new Error("Usuarios: " + err.message );
-
-        }
-
-    }
-    
-    const getMessages = async () => {
-        try {
-
-            const f = await fetch("api/chat/messages")
-            const result = await f.json()
-            setMessages(result)
-
-        } catch( err ) {
-
-            throw new Error("Mensajes: " + err.message );
-
-        }
-    }
-
-    
     return(
-        <div className="Chat">
-            <div>
+        <div className={ `Chat ${styles.Chat}` }>
+            <aside>
                 <Users users={users}/>
-            </div>
-            <div>
+            </aside>
+            <section>
                 <Messages messages={ messages }/>
-            </div>
+            </section>
+
+            <footer>
+                <Compose users={ users }/>
+            </footer>
         </div>
     )
 }

@@ -1,0 +1,24 @@
+.Chat footer {
+    /* w100p */
+    width: 100%;
+    /* posf */
+    position: fixed;
+    /* b0 */
+    bottom: 0;
+    /* df */
+    display: flex;
+    /* jcsev */
+    justify-content: space-evenly;
+    /* p1rem */
+    padding: 1rem;
+    /* bgc */
+    background-color: #fff;
+}
+
+
+.Chat {
+    /* dg */
+    display: grid;
+    /* gtc */
+    grid-template-columns: 20rem 1fr;
+}
