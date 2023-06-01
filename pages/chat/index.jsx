@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 
 
 
+
 export default () => {
     
     const [ users, setUsers ] = useState([])
@@ -69,5 +70,3 @@ export default () => {
         <Chat users={users} messages={messages}/>
     )
 }
-
-// https://github.com/furenku/Chat-con-next.js
