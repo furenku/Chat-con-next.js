@@ -58,7 +58,7 @@ export default () => {
         try {
             const f = await fetch("api/chat/messages")
             const result = await f.json()
-            setMessages(result)
+            setMessages(result.reverse())
         } catch( err ) {
 
             throw new Error("Mensajes: " + err.message );
@@ -66,7 +66,31 @@ export default () => {
         }
     }
 
+
+    const sendMessage = async ({
+        user,
+        message
+    }) => {
+        try {
+            const f = await fetch( "api/chat/messages", {
+                method: "POST",
+                body: JSON.stringify({
+                    user,
+                    message
+                }),
+            })
+            if( f.status == 200 ) {
+                await getMessages()
+            }
+        } catch( err ) {
+            console.log("No se pudo enviar mensaje:" + err.message);
+        }
+
+
+    }
+
+
     return (
-        <Chat users={users} messages={messages}/>
+        <Chat users={users} messages={messages} send={ sendMessage }/>
     )
 }

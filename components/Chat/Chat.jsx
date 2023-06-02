@@ -6,19 +6,19 @@ import Users from "./Users/Users"
 import Compose from "./Compose/Compose"
 
 
-export default ({ users, messages }) => {
+export default ({ users, messages, send }) => {
 
     return(
         <div className={ `Chat ${styles.Chat}` }>
-            <aside>
+            <div>
                 <Users users={users}/>
-            </aside>
-            <section>
+            </div>
+            <div>
                 <Messages messages={ messages }/>
-            </section>
+            </div>
 
             <footer>
-                <Compose users={ users }/>
+                <Compose users={ users } send={ send }/>
             </footer>
         </div>
     )

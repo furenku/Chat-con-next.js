@@ -22,3 +22,9 @@
     /* gtc */
     grid-template-columns: 20rem 1fr;
 }
+
+.Chat > div {
+
+    /* pb4rem */
+    padding-bottom: 4rem;
+}

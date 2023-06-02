@@ -2,11 +2,9 @@ import { useState } from "react"
 
 export default ({ users, send }) => {
 
-    
     const [ message, setMessage ] = useState("")
     const [ user, setUser ] = useState()
-
-
+    
     let renderUsers = users.map( u => (
         <option value={ u.id } key={ "user_option_" + u.id }>
             { u.username }
